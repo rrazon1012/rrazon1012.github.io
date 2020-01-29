@@ -1,3 +1,10 @@
+@font-face{
+   font-family: 'jedi';
+    src: url('starjedi-webfont.woff2') format('woff2'),
+         url('starjedi-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .searchbar {
    width: 70%;
    display: block;
@@ -10,6 +17,7 @@
 
 #title{
    margin-left: 25px;
+   font-family: 'jedi';
 }
 #bar{
    display: block;
@@ -24,9 +32,10 @@
    width: 50%;
 }
 .artist:hover{
-   background-color:darksalmon;
+   background-color: lightgray;
 }
 .artist{
+   font-family: 'jedi';
    display: flex;
    flex-flow: row;
    border-style: solid;
