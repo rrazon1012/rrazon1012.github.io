@@ -57,7 +57,7 @@ function add(){
    del.className = "delete";
    del.textContent = "Delete"
    del.onclick = function(){
-      container.removeChild(artist);
+      this.parentNode.remove();
       localStorage.removeItem(tempname);
    }
    //deldiv.appendChild(del);
@@ -113,7 +113,7 @@ function search(){
          del.className = "delete";
          del.textContent = "Delete"
          del.onclick = function(){
-            container.removeChild(artist);
+            this.parentNode.remove();
             localStorage.removeItem(artistname.textContent);
             
          }
@@ -153,16 +153,8 @@ function load(){
    
          var artistpicture = document.createElement("IMG")
          artistpicture.src = array.image;
-         
+         container.appendChild(artist);
          var del = document.createElement("BUTTON")
-         del.className = "delete";
-         del.textContent = "Delete"
-         del.onclick = function(){
-            container.removeChild(artist);
-            localStorage.removeItem(artistname.textContent);
-            
-         }
-         
          artist.appendChild(pic);
          artist.appendChild(information);
          artist.appendChild(del);
@@ -170,6 +162,12 @@ function load(){
          pic.appendChild(artistpicture);
          information.appendChild(artistname);
          information.appendChild(artistinfo);  
-         container.appendChild(artist);
+         
+         del.className = "delete";
+         del.textContent = "Delete"
+         del.onclick = function(){
+            this.parentNode.remove();
+            localStorage.removeItem(artistname.textContent);
+         }
       }
 }
