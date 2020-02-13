@@ -88,9 +88,16 @@ function search(){
    var input = searchbar.value;
    var container = document.getElementById("input-destination");
    container.innerHTML = "";
-   for(var i = 0; i < localStorage.length;i++){
-      if(localStorage.key(i).match(input)){
-         var array = localStorage.getItem(localStorage.key(i));
+   
+   for(var i = 0; i < localStorage.length;i++)
+   {
+      var patt = new RegExp(input.toLowerCase());
+      console.log(input);
+      console.log(localStorage.key(i));
+      console.log(patt.test(localStorage.key(i).toLowerCase()));
+      if(patt.test(localStorage.key(i).toLowerCase()))
+      {   
+         var array = JSON.parse(localStorage.getItem(localStorage.key(i)));
          var artist = document.createElement("DIV");
          artist.className = "artist";
          var pic = document.createElement("DIV")
@@ -135,7 +142,7 @@ function load(){
    var input = searchbar.value;
    var container = document.getElementById("input-destination");
    for(var i = 0; i < localStorage.length;i++){
-         var array = localStorage.getItem(localStorage.key(i));
+         var array = JSON.parse(localStorage.getItem(localStorage.key(i)));
          var artist = document.createElement("DIV");
          artist.className = "artist";
          var pic = document.createElement("DIV")
@@ -153,6 +160,7 @@ function load(){
    
          var artistpicture = document.createElement("IMG")
          artistpicture.src = array.image;
+      
          container.appendChild(artist);
          var del = document.createElement("BUTTON")
          artist.appendChild(pic);
